@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="StudySpark helps students create flashcards, organize subject decks, and track study progress.">
+  <title>StudySpark | Flashcard Study App</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="index.html"><span class="brand-icon">✦</span><span>StudySpark<small>YOUR STUDY SPACE</small></span></a>
+    <nav aria-label="Main navigation"><a class="nav-link active" href="#dashboard">Dashboard</a><a class="nav-link" href="#decks">My decks</a><a class="nav-link" href="privacy.html">Privacy</a></nav>
+    <button class="button primary top-add" id="jumpAdd" type="button">＋ New flashcard</button>
+  </header>
+
+  <main class="app-shell" id="dashboard">
+    <aside class="sidebar">
+      <div class="sidebar-label">WORKSPACE</div>
+      <button class="side-link selected" data-view="all" type="button"><span>▦</span> All flashcards <b id="sideAll">0</b></button>
+      <button class="side-link" data-view="unreviewed" type="button"><span>◷</span> Need practice <b id="sidePractice">0</b></button>
+      <button class="side-link" data-view="mastered" type="button"><span>✓</span> Remembered <b id="sideMastered">0</b></button>
+      <div class="sidebar-label deck-label">SUBJECT DECKS <button id="addDeckBtn" class="text-button" type="button" aria-label="Add subject deck">＋</button></div>
+      <div id="deckList" class="deck-list"></div>
+      <div class="sidebar-tip"><span>✧</span><strong>Little steps add up.</strong><p>Review a few cards every day to build stronger recall.</p></div>
+    </aside>
+
+    <section class="content">
+      <section class="hero">
+        <div><p class="eyebrow">YOUR PERSONAL LEARNING HUB</p><h1>Make learning<br><span>stick.</span></h1><p>Create flashcards, practice at your pace, and celebrate your progress.</p><button class="button hero-button" id="heroAdd" type="button">Create a flashcard <span>↗</span></button></div>
+        <div class="hero-art" aria-hidden="true"><div class="spark spark-one">✦</div><div class="spark spark-two">✧</div><div class="back-card"></div><div class="middle-card"></div><div class="front-card"><span>QUESTION</span><strong>What will<br>you learn today?</strong><i>Tap to reveal ↗</i></div></div>
+      </section>
+
+      <section class="stats-grid" aria-label="Study statistics">
+        <article class="stat"><div class="stat-top"><span>Total flashcards</span><span class="stat-icon lavender">▤</span></div><strong id="statTotal">0</strong><small>Across all subject decks</small></article>
+        <article class="stat"><div class="stat-top"><span>Remembered</span><span class="stat-icon mint">✓</span></div><strong id="statMastered">0</strong><small>Cards you know well</small></article>
+        <article class="stat"><div class="stat-top"><span>Need practice</span><span class="stat-icon peach">↻</span></div><strong id="statPractice">0</strong><small>Keep working on these</small></article>
+      </section>
+
+      <section class="study-section" id="study">
+        <div class="section-title"><div><p class="eyebrow">ACTIVE RECALL</p><h2>Study session <span id="studyDeckName">All flashcards</span></h2></div><button class="text-button" id="shuffleBtn" type="button">⤨ Shuffle</button></div>
+        <div id="studyArea" class="study-area">
+          <div class="study-empty"><span>✧</span><h3>Your next discovery starts here</h3><p>Create a flashcard or select a deck to begin studying.</p><button class="button primary" id="emptyAdd" type="button">＋ Create first card</button></div>
+        </div>
+      </section>
+
+      <section class="cards-section" id="decks">
+        <div class="section-title"><div><p class="eyebrow">YOUR COLLECTION</p><h2>Explore flashcards</h2></div><span id="resultCount" class="result-count">0 cards</span></div>
+        <div class="tools-row">
+          <label class="search-box"><span>⌕</span><input id="searchInput" type="search" placeholder="Search questions, answers, or subjects..." aria-label="Search flashcards"></label>
+          <select id="deckFilter" aria-label="Filter by subject"><option value="all">All subjects</option></select>
+          <select id="progressFilter" aria-label="Filter by progress"><option value="all">All progress</option><option value="unreviewed">Need practice</option><option value="mastered">Remembered</option></select>
+        </div>
+        <div id="flashcardGrid" class="flashcard-grid"></div>
+        <div id="collectionEmpty" class="collection-empty hidden"><span>⌕</span><strong>No flashcards found</strong><p>Try another search or create a new flashcard.</p></div>
+      </section>
+      <footer><span>StudySpark</span> · Learn at your own pace · <a href="privacy.html">Privacy Policy</a></footer>
+    </section>
+  </main>
+
+  <dialog id="cardDialog" class="modal">
+    <form id="cardForm" class="modal-form">
+      <div class="modal-heading"><div><p class="eyebrow">BUILD YOUR KNOWLEDGE</p><h2 id="cardDialogTitle">Create a flashcard</h2></div><button class="close-button" type="button" data-close="cardDialog" aria-label="Close dialog">×</button></div>
+      <input id="editCardId" type="hidden">
+      <label class="form-label">Question / term<input id="questionInput" maxlength="240" required placeholder="e.g., What does HTML stand for?"></label>
+      <label class="form-label">Answer / definition<textarea id="answerInput" maxlength="500" rows="4" required placeholder="Write a clear, memorable answer..."></textarea></label>
+      <label class="form-label">Subject deck<select id="cardDeckInput" required></select></label>
+      <div class="modal-actions"><button class="button secondary" type="button" data-close="cardDialog">Cancel</button><button class="button primary" type="submit" id="saveCardButton">Save flashcard ↗</button></div>
+    </form>
+  </dialog>
+
+  <dialog id="deckDialog" class="modal">
+    <form id="deckForm" class="modal-form">
+      <div class="modal-heading"><div><p class="eyebrow">ORGANIZE YOUR STUDY</p><h2>Create a subject deck</h2></div><button class="close-button" type="button" data-close="deckDialog" aria-label="Close dialog">×</button></div>
+      <label class="form-label">Subject name<input id="deckNameInput" maxlength="50" required placeholder="e.g., Programming"></label>
+      <p class="helper">Use one deck for each subject or topic. Deck names must be unique.</p>
+      <div class="modal-actions"><button class="button secondary" type="button" data-close="deckDialog">Cancel</button><button class="button primary" type="submit">Create deck ↗</button></div>
+    </form>
+  </dialog>
+
+  <dialog id="deleteDialog" class="modal confirm-modal">
+    <form method="dialog" class="modal-form">
+      <div class="modal-heading"><div><p class="eyebrow">PLEASE CONFIRM</p><h2 id="deleteTitle">Delete flashcard?</h2></div><button class="close-button" type="button" data-close="deleteDialog" aria-label="Close dialog">×</button></div>
+      <p id="deleteMessage">This action cannot be undone.</p>
+      <div class="modal-actions"><button class="button secondary" value="cancel">Cancel</button><button class="button danger" id="confirmDelete" value="confirm">Delete</button></div>
+    </form>
+  </dialog>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+</body>
+</html>
