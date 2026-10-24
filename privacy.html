@@ -1,50 +1,181 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="StudySpark privacy policy and data practices.">
+  <meta name="description" content="StudySpark Privacy Policy">
   <title>Privacy Policy | StudySpark</title>
   <link rel="stylesheet" href="styles.css">
+  <style>
+    .policy-page {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 30px 24px 36px;
+    }
+    .policy-back {
+      display: inline-block;
+      margin-bottom: 18px;
+      color: #7964e8;
+      font-weight: 700;
+      text-decoration: none;
+    }
+    .policy-hero {
+      background: linear-gradient(115deg,#eee9ff,#f7f1ff,#eee8ff);
+      border: 1px solid #e9e3ff;
+      border-radius: 20px;
+      padding: 36px;
+      margin-bottom: 22px;
+    }
+    .policy-hero h1 {
+      color: #28243d;
+      font-size: clamp(30px,4vw,42px);
+      margin: 10px 0;
+    }
+    .policy-hero p {
+      color: #71698f;
+      line-height: 1.8;
+    }
+    .policy-meta {
+      font-size: 13px;
+      font-weight: 700;
+    }
+    .policy-grid {
+      display: grid;
+      grid-template-columns: repeat(2,minmax(0,1fr));
+      gap: 16px;
+    }
+    .policy-section {
+      background: #fff;
+      border: 1px solid #ece9f5;
+      border-radius: 16px;
+      padding: 24px;
+      box-shadow: 0 10px 30px rgba(67,49,130,.05);
+    }
+    .policy-section h2 {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      color: #302a4a;
+      font-size: 17px;
+      line-height: 1.5;
+      margin-top: 0;
+    }
+    .policy-number {
+      display: inline-grid;
+      place-items: center;
+      flex: 0 0 30px;
+      height: 30px;
+      border-radius: 9px;
+      background: #f0edff;
+      color: #7964e8;
+      font-size: 12px;
+    }
+    .policy-section p {
+      color: #716b87;
+      font-size: 14px;
+      line-height: 1.9;
+      margin-bottom: 0;
+    }
+    .policy-section.wide {
+      grid-column: 1 / -1;
+      background: linear-gradient(140deg,#fff,#faf8ff);
+    }
+    .policy-footer {
+      border-top: 1px solid #ece9f5;
+      margin-top: 28px;
+      padding-top: 20px;
+      text-align: center;
+      color: #88819f;
+      font-size: 13px;
+    }
+    .policy-footer a {
+      color: #7964e8;
+      font-weight: 700;
+      text-decoration: none;
+    }
+    @media(max-width:680px) {
+      .policy-page { padding: 20px 16px; }
+      .policy-hero { padding: 24px; }
+      .policy-grid { grid-template-columns: 1fr; }
+      .policy-section.wide { grid-column: auto; }
+      .policy-section { padding: 20px; }
+    }
+  </style>
 </head>
 <body>
   <header class="topbar">
-    <a class="brand" href="index.html"><span class="brand-icon">✦</span><span>StudySpark<small>YOUR STUDY SPACE</small></span></a>
-    <nav aria-label="Main navigation"><a class="nav-link" href="index.html">Dashboard</a><a class="nav-link active" href="privacy.html">Privacy</a></nav>
+    <a class="brand" href="index.html">
+      <span class="brand-icon">✦</span>
+      <span>StudySpark<small>YOUR STUDY SPACE</small></span>
+    </a>
+    <nav aria-label="Main navigation">
+      <a class="nav-link" href="index.html">Dashboard</a>
+      <a class="nav-link active" href="privacy.html">Privacy</a>
+    </nav>
   </header>
-  <main class="policy-wrap">
-    <a class="back" href="index.html">← Back to StudySpark</a>
-    <p class="eyebrow">YOUR INFORMATION MATTERS</p>
-    <h1>Privacy Policy</h1>
-    <p class="updated">Last updated: October 17, 2026</p>
-    <p>This Privacy Policy describes how StudySpark, a student flashcard study application developed as a CPP123 Emerging Technology course project, handles information. It applies to this starter version. The developer must review it before publication and update it if the app's behavior or hosting setup changes.</p>
 
-    <h2>1. Information stored by StudySpark</h2>
-    <p>When you use StudySpark, you may enter flashcard questions, answers, subject deck names, and whether a card is marked as remembered. This information is saved in your browser's local storage on the device and browser you use. This version does not require an account and does not request your name, email address, or password.</p>
+  <main class="policy-page">
+    <a class="policy-back" href="index.html">← Back to StudySpark</a>
 
-    <h2>2. How information is used</h2>
-    <p>The app uses saved flashcards to display subject decks, study cards, search results, and progress counts. In this version, the app code does not send your flashcard content to a StudySpark server or database.</p>
+    <section class="policy-hero">
+      <p><strong>YOUR INFORMATION MATTERS</strong></p>
+      <h1>Privacy Policy</h1>
+      <p class="policy-meta">✦ Last updated: October 24, 2026</p>
+      <p>
+        StudySpark is a browser-based flashcard study application
+        created as a CPP123 Emerging Technology course project.
+        This policy explains what information the app stores and
+        the role of the services used to publish it.
+      </p>
+    </section>
 
-    <h2>3. Storage and deletion</h2>
-    <p>Your flashcards remain in local storage in the current browser profile. You can delete individual flashcards or subject decks inside the app. Clearing this website's browser storage may delete all saved decks and cards. Local data does not automatically move to another browser or device. The developer does not have a server-side copy to retrieve or delete in this version.</p>
+    <div class="policy-grid">
+      <section class="policy-section">
+        <h2><span class="policy-number">01</span>Information stored in the app</h2>
+        <p>You may enter flashcard questions, answers, subject or deck names, and study progress. StudySpark stores this information in your browser's local storage so your cards can remain available when you refresh the page. The app does not require an account or ask for your name, email address, or password.</p>
+      </section>
 
-    <h2>4. Third-party services</h2>
-    <p>The stylesheet loads fonts from Google Fonts, so your browser may contact Google's font service to download font files. That service may receive standard connection information, such as your IP address. If this site is published using a hosting provider, that provider may process technical request data or access logs under its own privacy policy. Review the actual hosting provider's terms before publication.</p>
+      <section class="policy-section">
+        <h2><span class="policy-number">02</span>How information is used</h2>
+        <p>The flashcard information you enter is used to display cards and decks, support searching and studying, and show study progress. The StudySpark app code stores this content in your browser and does not send your flashcard content to a StudySpark-owned server or database.</p>
+      </section>
 
-    <h2>5. Security and limitations</h2>
-    <p>Browser storage is provided for convenience and is not designed for sensitive or confidential information. Someone with access to your browser profile may be able to see your saved cards. Avoid entering passwords, student identification numbers, confidential course materials, or other sensitive personal data. Data can be lost if browser storage is cleared or the device is changed. No storage method can be guaranteed completely secure.</p>
+      <section class="policy-section">
+        <h2><span class="policy-number">03</span>Storage and deletion</h2>
+        <p>Your saved cards are stored in local storage in your browser profile and on your device. You can remove cards or decks using the app's available controls. Clearing this website's local storage or browser data may remove saved cards. Your data does not automatically transfer to another browser or device. The developer cannot recover cards from a StudySpark server because the app does not keep a server-side copy.</p>
+      </section>
 
-    <h2>6. Children's and other people's information</h2>
-    <p>Do not enter sensitive personal information about yourself or other people. Use fictional or non-sensitive examples when demonstrating this course project.</p>
+      <section class="policy-section">
+        <h2><span class="policy-number">04</span>Hosting and third-party services</h2>
+        <p>The website is published using GitHub Pages. GitHub may process technical information associated with requests to its hosting service, such as IP addresses, browser details, and access logs, according to its own policies. The website also loads its stylesheet from the same website and may request font files from Google Fonts if configured to do so. Third-party providers control their own data practices; please review their current privacy policies for details.</p>
+      </section>
 
-    <h2>7. Policy changes</h2>
-    <p>This policy must be updated if the app adds user accounts, analytics, a cloud database, or other services that change its data practices. The date above should reflect the latest revision.</p>
+      <section class="policy-section">
+        <h2><span class="policy-number">05</span>Security and limitations</h2>
+        <p>Local browser storage is intended for convenience and is not a secure vault for confidential information. People with access to your browser profile or device may be able to access saved cards. Information may be lost if browser data is cleared, the browser profile is removed, or you change devices. No website or storage method can be guaranteed completely secure.</p>
+      </section>
 
-    <h2>8. Contact</h2>
-    <p>For privacy questions, contact the student developer through the contact method approved by the course instructor. Before publishing, replace this sentence with a suitable contact method or revise it to accurately explain how privacy questions can be raised.</p>
+      <section class="policy-section">
+        <h2><span class="policy-number">06</span>Information about other people</h2>
+        <p>Do not enter passwords, student identification numbers, sensitive personal information, or confidential information about yourself or other people. Use fictional or non-sensitive sample content when demonstrating this course project.</p>
+      </section>
 
-    <p><strong>Student developer note:</strong> Confirm this policy matches the final deployed website and the hosting provider's actual practices. Include the complete published policy in the project report.</p>
+      <section class="policy-section">
+        <h2><span class="policy-number">07</span>Changes to this policy</h2>
+        <p>This policy may be updated if StudySpark's features, storage methods, hosting, or third-party services change. The date at the top indicates the latest revision.</p>
+      </section>
+
+      <section class="policy-section">
+        <h2><span class="policy-number">08</span>Contact</h2>
+        <p>For privacy questions about this student course project, please contact the student developer through the course instructor.</p>
+      </section>
+    </div>
+
+    <footer class="policy-footer">
+      StudySpark · Learn at your own pace ·
+      <a href="privacy.html">Privacy Policy</a>
+    </footer>
   </main>
-  <footer>StudySpark · Learn at your own pace · <a href="privacy.html">Privacy Policy</a></footer>
 </body>
 </html>
